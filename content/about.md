@@ -13,6 +13,9 @@ _Amy Williams is a PhD candidate with a strong interest in data visualization, a
 
 > Find quote.
 
+
+QUOTE 
+
   For more information, please follow the links below:
 [LinkedIn](https://en.wikipedia.org/wiki/Ford_Prefect_\(character\))
 
