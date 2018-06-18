@@ -1,0 +1,17 @@
+---
+title: Final Project
+author: Amy Williams
+date: '2018-06-18'
+slug: final-project
+categories: []
+tags: []
+description: Desc
+hacker_news_id: ''
+lobsters_id: ''
+meta_img: /images/image.jpg
+---
+
+```{r echo=F}
+knitr::include_graphics(here("static","Final Presentation.pdf"))
+```
+
