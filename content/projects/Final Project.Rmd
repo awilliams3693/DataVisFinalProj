@@ -1,0 +1,11 @@
++++
+title: "Final Project"
+author: "Amy"
+date: "6/18/2018"
+output: html_document
++++
+
+```{r setup, echo=FALSE}
+knitr::include_graphics(here("static","Final Presentation.pdf"))
+```
+
