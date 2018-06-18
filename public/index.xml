@@ -12,11 +12,29 @@
     
     
     <item>
+      <title>CS 631 Final Project Slide Deck</title>
+      <link>/post/cs-631-final-project-slide-deck/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cs-631-final-project-slide-deck/</guid>
+      <description>Here are some of my slides</description>
+    </item>
+    
+    <item>
       <title>Final Project</title>
       <link>/projects/small-project/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/projects/small-project/</guid>
+      <description>knitr::include_graphics(here(&amp;ldquo;static&amp;rdquo;,&amp;ldquo;Final Presentation.pdf&amp;rdquo;))</description>
+    </item>
+    
+    <item>
+      <title>Final Project Slide Deck</title>
+      <link>/post/final-project-slide-deck/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/final-project-slide-deck/</guid>
       <description></description>
     </item>
     
@@ -101,6 +119,15 @@ More complete instructions are available at installing hugo
 Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
 Follow the following steps:
  Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/blog/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/</guid>
+      <description>Final Presentation   class: center, middle, inverse, title-slide # Final Presentation ## CS631 ### Amy Williams --- # The Data ###Data was collected by me to examine c-Fos levels in the fear circuit after contextual fear conditioning #### 4 variables * 2 numeric - animal IDs and average c-fos counts * 2 categorical - behavioral group and brain region * Behavioral group - comparing initital learning ( __COND__ ) to relearning ( __REC EXT__ and __REC EXT__ ) and no-learning controls ( __HAND__ ) * Brain Regions of Interest- * __Hippocampus__ and Dentate Gyrus ( __DG__ ) * Bed nucelus of the stria terminalis ( __d/vBNST__ ) --- #The Data Cont&#39;d ``` # A tibble: 6 x 4 id count group region &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; 1 21 34 COND Hippocampus 2 22 26 COND Hippocampus 3 41 38.</description>
     </item>
     
     <item>
