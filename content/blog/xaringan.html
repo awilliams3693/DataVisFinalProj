@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Final Presentation</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Amy Williams" />
+    <link href="xaringan_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="xaringan_files/remark-css-0.0.1/hygge.css" rel="stylesheet" />
+    <link href="xaringan_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Final Presentation
+## CS631
+### Amy Williams
+
+---
+
+
+# The Data
+###Data was collected by me to examine c-Fos levels in the fear circuit after contextual fear conditioning
+
+#### 4 variables 
+* 2 numeric - animal IDs and average c-fos counts
+* 2 categorical - behavioral group and brain region
+  * Behavioral group - comparing initital learning ( __COND__ ) to relearning ( __REC EXT__ and __REC EXT__ ) and no-learning controls ( __HAND__ )
+  * Brain Regions of Interest- 
+      * __Hippocampus__ and Dentate Gyrus ( __DG__ )
+      * Bed nucelus of the stria terminalis ( __d/vBNST__ )
+      
+---
+#The Data Cont'd
+
+```
+# A tibble: 6 x 4
+     id count group region     
+  &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;      
+1    21  34   COND  Hippocampus
+2    22  26   COND  Hippocampus
+3    41  38.9 COND  Hippocampus
+4    42  24.6 COND  Hippocampus
+5    61  19.6 COND  Hippocampus
+6    62  37   COND  Hippocampus
+```
+
+
+---
+class: middle, center
+#The Audience
+
+###Learning and memory researchers and YOU!
+#####Ivan Pavlov 
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Ivan_Pavlov_NLM2.jpg" width="350px" height="350px" /&gt;
+---
+class: middle, center
+#Graph Type
+
+####The Box-plot
+&lt;img src="https://vignette.wikia.nocookie.net/math/images/1/13/Simple.box.defs.gif/revision/latest?cb=20140708183859&amp;path-prefix=en" width="300px" /&gt;
+
+---
+#What am I attempting to show?
+
+###The importance of activity in different brain regions to learning and relearning a contextual fear memory
+
+####Why?
+ Learning and re-learning likely involve similar circuits, but re-learning may recruit a remote memory that is distributed throughout the cortex
+---
+class: inverse, middle, center
+# And now, the box plot!
+---
+#Graph Orientation
+![](xaringan_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+---
+#The Graph
+
+![](xaringan_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+
+---
+#Hippocampus
+![](xaringan_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+---
+#BNST
+![](xaringan_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+---
+#The Code: Mapping
+
+```r
+*plot &lt;-data2 %&gt;% ggplot(aes(fct_relevel(group, group_rl), count, color = fct_relevel(group, group_rl))) +
+geom_boxplot() + 
+facet_wrap(~fct_relevel(region, c("Hippocampus","DG","dBNST","vBNST"))) + 
+theme_bw() +
+labs(x = "Group", y = "Avg c-Fos-positive Cells") +
+scale_color_manual(name="", values= beyonce_palette(66) [c(11,5,7,1)]) +
+ggtitle("Average c-Fos-Positive Cells Per Group By Region") +
+theme(plot.title = element_text(hjust = 0.5)) +
+scale_x_discrete(labels = c("","","",""))
+```
+---
+#The Code: Geom Boxplot + Facet Wrap
+
+```r
+plot &lt;-data2 %&gt;% ggplot(aes(fct_relevel(group, group_rl), count, color = fct_relevel(group, group_rl))) +   
+*geom_boxplot() +
+*facet_wrap(~fct_relevel(region, c("Hippocampus","DG","dBNST","vBNST"))) +
+theme_bw() +
+labs(x = "Group", y = "Avg c-Fos-positive Cells") +
+scale_color_manual(name="", values= beyonce_palette(66) [c(11,5,7,1)]) +
+ggtitle("Average c-Fos-Positive Cells Per Group By Region") +
+theme(plot.title = element_text(hjust = 0.5)) +
+scale_x_discrete(labels = c("","","",""))
+```
+---
+#The Code: Graph Formatting
+
+```r
+plot &lt;-data2 %&gt;% ggplot(aes(fct_relevel(group, group_rl), count, color = fct_relevel(group, group_rl))) +   
+geom_boxplot() +  
+facet_wrap(~fct_relevel(region, c("Hippocampus","DG","dBNST","vBNST"))) + 
+*theme_bw() +
+*labs(x = "Group", y = "Avg c-Fos-positive Cells") +
+scale_color_manual(name="", values= beyonce_palette(66) [c(11,5,7,1)]) +
+*ggtitle("Average c-Fos-Positive Cells Per Group By Region") +
+*theme(plot.title = element_text(hjust = 0.5)) +
+*scale_x_discrete(labels = c("","","",""))
+```
+---
+#The Code: Color
+
+```r
+plot &lt;-data2 %&gt;% ggplot(aes(fct_relevel(group, group_rl), count, color = fct_relevel(group, group_rl))) +   
+geom_boxplot() +  
+facet_wrap(~fct_relevel(region, c("Hippocampus","DG","dBNST","vBNST"))) + 
+theme_bw() + 
+labs(x = "Group", y = "Avg c-Fos-positive Cells") +
+*scale_color_manual(name="", values= beyonce_palette(66) [c(11,5,7,1)]) +
+ggtitle("Average c-Fos-Positive Cells Per Group By Region") +  
+theme(plot.title = element_text(hjust = 0.5)) +  
+scale_x_discrete(labels = c("","","",""))   
+```
+---
+background-image: url("https://media.giphy.com/media/mR3dXKpI6P8CA/giphy.gif")
+background-size: cover
+---
+    </textarea>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "atelier-lakeside-light",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
