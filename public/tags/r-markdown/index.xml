@@ -21,17 +21,6 @@
     </item>
     
     <item>
-      <title>CS 631 Final Data Visualization Slide Deck</title>
-      <link>/post/cs-631-final-data-visualization-slide-deck/</link>
-      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/cs-631-final-data-visualization-slide-deck/</guid>
-      <description>For my CS 631 Data Visualization final brief that I presented in class, I explored using boxplot + facet wrapping to compare the increase in cFos activity following different behavioral measures faceted by different brain regions.
-Here are some my slides made with Xaringan.
-Enjoy!</description>
-    </item>
-    
-    <item>
       <title>Gun Sales in the Top Selling States</title>
       <link>/post/gun-sales-in-the-top-selling-states/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
