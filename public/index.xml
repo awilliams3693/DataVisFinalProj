@@ -21,6 +21,17 @@
     </item>
     
     <item>
+      <title>CS 631 Final Data Visualization Slide Deck</title>
+      <link>/post/cs-631-final-data-visualization-slide-deck/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/cs-631-final-data-visualization-slide-deck/</guid>
+      <description>For my CS 631 Data Visualization final brief that I presented in class, I explored using boxplot + facet wrapping to compare the increase in cFos activity following different behavioral measures faceted by different brain regions.
+Here are some my slides made with Xaringan.
+Enjoy!</description>
+    </item>
+    
+    <item>
       <title>Gun Sales in the Top Selling States</title>
       <link>/post/gun-sales-in-the-top-selling-states/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
@@ -52,39 +63,12 @@ library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/data
     </item>
     
     <item>
-      <title>CS 631 Final Project Slide Deck</title>
-      <link>/post/cs-631-final-project-slide-deck/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/cs-631-final-project-slide-deck/</guid>
-      <description>Here are some of my slides</description>
-    </item>
-    
-    <item>
       <title>Final Project</title>
       <link>/projects/small-project/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>/projects/small-project/</guid>
       <description>knitr::include_graphics(here(&amp;ldquo;static&amp;rdquo;,&amp;ldquo;Final Presentation.pdf&amp;rdquo;))</description>
-    </item>
-    
-    <item>
-      <title>Final Project Slide Deck</title>
-      <link>/post/final-project-slide-deck/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/post/final-project-slide-deck/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>First Blog Post</title>
-      <link>/post/2018-06-04-first-blog-post/</link>
-      <pubDate>Mon, 04 Jun 2018 12:55:10 -0700</pubDate>
-      
-      <guid>/post/2018-06-04-first-blog-post/</guid>
-      <description></description>
     </item>
     
     <item>
