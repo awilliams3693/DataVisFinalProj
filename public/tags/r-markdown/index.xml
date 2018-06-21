@@ -6,10 +6,21 @@
     <description>Recent content in R Markdown on Amy Williams</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-US</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 21 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years</title>
+      <link>/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/</guid>
+      <description>This post contains my visualization of the MoMA’s Purchasing Patterns by Year of Creation of the Painting. I was trying to determine what era of art the MoMa purchases from and if the year of creation followed the year of purchasing.
+Package Install
+## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.</description>
+    </item>
     
     <item>
       <title>Hello R Markdown</title>

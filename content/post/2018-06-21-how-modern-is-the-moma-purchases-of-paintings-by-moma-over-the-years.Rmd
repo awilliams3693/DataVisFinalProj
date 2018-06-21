@@ -1,0 +1,88 @@
+---
+title: How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years
+author: Amy Williams
+date: '2018-06-21'
+slug: how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years
+categories:
+  - R
+tags:
+  - plot
+  - R Markdown
+  - data visualization
+description: Desc
+hacker_news_id: ''
+lobsters_id: ''
+meta_img: /images/image.jpg
+---
+
+This post contains my visualization of the MoMA's Purchasing Patterns by Year of Creation of the Painting. I was trying to determine what era of art the MoMa purchases from and if the year of creation followed the year of purchasing.
+
+Package Install
+```{r echo=FALSE}
+library(readr)
+library(here)
+library(tidyverse)
+```
+
+## 1) The Code:
+First Uploading and taking a look at the data and then the visualization. 
+```{r}
+#uploading the data
+data <- read_csv(here::here("static/data","artworks-cleaned.csv"))
+data_purch <- data %>% filter(purchase == TRUE) 
+glimpse(data_purch)
+# the graph
+ggplot(data_purch, aes(x = year_acquired, y = year_created)) + 
+  geom_smooth(color = "black") + 
+  labs(x = "Year Acquired", y = "Year Created") + 
+  ggtitle("MoMA Paintings Purchased Over the Years and Creation Year") +
+  theme_bw() 
+```
+## 2) Type of Plot:
+
+Line plot. 
+
+## 3) Data Description: 
+
+This data is from the MOMA dataset we worked with in Lab 2. The data contains information about all the artwork at the MOMA, including the year created, year acquired, artists, information about the artist, the paintings dimentions, type of art, how it was acquired.  
+
+## 4) Audience:
+
+I think the audience in this graph is anyone who is curious about the timing of MOMAs acquisitions relative to when it is created. This could be useful for anyone working at a modern art museum or who curates modern art. 
+
+## 5) Representation Description: 
+
+With this graph I was attempting to show just how "Modern" MOMA truly stays with their acquisition of new pieces and if the years of creation positively correlate with the years of acquisition. The graph can be used to show that this correlation is indeed positive and the MOMA tries to purchase current work. 
+
+Definitions of different graph parts: 
+* X and Y axis of a line graph show the value of two numeric variables 
+* Line - this line show where the X values coorespond to Y values. This line was created using LOESS method to smooth out the line
+* Grey area around line - This is the standard error around the line the show the variability in Y at each value of X
+
+## 6) How to read it & What to look for: 
+
+To read this graph, one must first familiarize themselves with the x and y axis to know which numeric variables are being compared with one another. They will see it is year acquired by year created.
+
+Then the viewer will want to study the line to understand the relationship between year created and acquired. They will first want to note the direction of the line. If the line is flat, there is no relationship. If the line is pointing up toward the right of the graph, there is a positive relationship. If the line is pointing up to the left, there is a negative relationship. If the line moves up and down at various points, there could be a biphasic or relationship that requires transformation of one variable to see clearly (logrithmic, exponential, etc). The veiwer will note that this line is pointing up to the right and thus shows a positive relationship between years acquired and created, which suggests that the MOMA keeps their collection current. However, the line does seem to be leveling out, suggesting that the MOMA might be keeping acquisitions to artwork made shortly after the 1970s, when the modern art period is typically considered to have ended. 
+
+The view will also want to look at the grey area arounnd the line to note any large differences in standard error, and thus differences in variability. They will note that the varibility of the year created has steaduly increased as year of acquisition increases. This suggests that in the 2000s the MOMA started buying art from a larger range of years creation. This actually has a very interesting interpretation that the viewer can start to gather - that modern and post-modern or contemporary art have different definitions and perhaps the MOMA is purchasing art that is considered modern according to definition. Modern art is art generally from 1860s-1970s and so in the 2000s perhap MOMA is predominately acquiring work still within the modern period, but also some newer contemporary art and this has caused the increase in varibility of the year of creation of the work.  
+
+
+## 7) Presentation tips: 
+
+Annotation could be used here to point out when the variability in "year created" increases and where the line levels out to point the viewer to that and gather a change in acquisition patterns. 
+
+I believe color is unnecessary here as only one relationship under consideration. Perhaps is multiple modern art museums' purchasing patterns were being considered then color would be useful. 
+
+The graph is scaled to show the full range of the relationship of year acquired and year created with some additional spacing around the lines so the graph does not seem claustrophobic. There are no minor tick lines for the same reason. 
+
+
+## 8) Variations and alternatives: are there common variations of this graph? How are they different, how are they used? Are there alternatives?
+
+Variations: A different type of line or smoothing process could have been used. If a basic line graph was used we would see the exact average of the year created that corresponds to every year acquired rather than what is shown with the LOESS (Local Polynomial Regression Fitting) method in geom_smooth and could perhaps give a more accurate portrail of the data. Alternatives to the LOESS methods include linear model, generalized linear model, generalized additive model, or robus linear model.
+
+Alternative: A scatter plot also could have been used or superimposed under the line. The scatter plot would definitely add more detail about the exact year of creation for every art work that was acquired in a certain year. However, this alternative would clutter the graph and this level of detail is not necessary for someone who is just trying to understand the relationship of the two. If the scatterplot was made quite transparent and under the line graph, it could add some helpful detail about the nature of the variability in year of creation.  
+
+## 9) Methods:
+
+In order to track the purchasing patterns of the MOMA I first used filter() to filter the data to only data that was purchased not gifted. Then I created this graph using `ggplot()` and `geom_smooth()`. Within the geom_smooth function I specified the color to be black because the automatic color of geom_smooth was unecessary with only one line. Then I specified the labels of the x and y axis with `labs()` and the graph title with `ggtitle()`. I used `theme_bw()` to standardize the representation of the graph and put a black outline around the plot. 

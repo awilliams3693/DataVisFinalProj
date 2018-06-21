@@ -15,24 +15,24 @@
 <meta property="og:site_name" content="Amy Williams" />
 <meta property="og:locale" content="nn_NO" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/tags/r-markdown/" />
-<meta property="og:title" content="R Markdown" />
-<meta property="twitter:title" content="R Markdown">
+<meta property="og:url" content="/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/" />
+<meta property="og:title" content="How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years" />
+<meta property="twitter:title" content="How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years">
 
-    <meta property="og:image" content="/img/banner.png">
+    <meta property="og:image" content="//images/image.jpg">
     <meta property="twitter:card" content="summary">
-    <meta property="twitter:image" content="/img/banner.png">
+    <meta property="twitter:image" content="//images/image.jpg">
 
-<meta property="og:description" content="">
-<meta property="twitter:description" content="">
+<meta property="og:description" content="Desc">
+<meta property="twitter:description" content="Desc">
 
 <title>
 
 
-     Amy Williams - R Markdown 
+     Amy Williams - How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years 
 
 </title>
-<link rel="canonical" href="/tags/r-markdown/">
+<link rel="canonical" href="/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/">
 
 
 <style media="screen">
@@ -1056,8 +1056,6 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 
 
 
-  <link href="/tags/r-markdown/index.xml" rel="alternate" type="application/rss+xml" title="Amy Williams" />
-
 
 </head>
 
@@ -1065,7 +1063,7 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <body>
 
 
-<div class="header header-home column">
+<div class="header column">
 
     <div class="container">
         
@@ -1113,23 +1111,126 @@ div.main .content .markdown pre, div.main .content .markdown pre code {
 <div class="main column">
     <div class="container">
         <div class="content">
-            <div class="posts">
-                <div class="page-heading">Posts about R Markdown</div>
-                <ul>
-                    
-                        <li class="post-item">
-    <span class="meta">Jul 23, 2015</span>
-    <a href="/blog/hello-r-markdown/"><span>Hello R Markdown</span></a>
-</li>
+            <div class="page-heading">
 
-                    
-                        <li class="post-item">
-    <span class="meta">Jun 21, 2018</span>
-    <a href="/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/"><span>How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years</span></a>
-</li>
+    How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years
 
-                    
-                </ul>
+</div>
+
+            <div class="markdown">
+                
+    
+    <p>This post contains my visualization of the MoMA’s Purchasing Patterns by Year of Creation of the Painting. I was trying to determine what era of art the MoMa purchases from and if the year of creation followed the year of purchasing.</p>
+<p>Package Install</p>
+<pre><code>## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown</code></pre>
+<pre><code>## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 2.2.1     ✔ purrr   0.2.5
+## ✔ tibble  1.4.2     ✔ dplyr   0.7.5
+## ✔ tidyr   0.8.1     ✔ stringr 1.3.1
+## ✔ ggplot2 2.2.1     ✔ forcats 0.3.0</code></pre>
+<pre><code>## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div id="the-code" class="section level2">
+<h2>1) The Code:</h2>
+<p>First Uploading and taking a look at the data and then the visualization.</p>
+<pre class="r"><code>#uploading the data
+data &lt;- read_csv(here::here(&quot;static/data&quot;,&quot;artworks-cleaned.csv&quot;))</code></pre>
+<pre><code>## Parsed with column specification:
+## cols(
+##   .default = col_character(),
+##   artist_birth_year = col_integer(),
+##   artist_death_year = col_double(),
+##   num_artists = col_integer(),
+##   n_female_artists = col_integer(),
+##   n_male_artists = col_integer(),
+##   year_acquired = col_double(),
+##   year_created = col_integer(),
+##   depth_cm = col_double(),
+##   height_cm = col_double(),
+##   width_cm = col_double(),
+##   purchase = col_logical(),
+##   gift = col_logical(),
+##   exchange = col_logical()
+## )</code></pre>
+<pre><code>## See spec(...) for full column specifications.</code></pre>
+<pre class="r"><code>data_purch &lt;- data %&gt;% filter(purchase == TRUE) 
+glimpse(data_purch)</code></pre>
+<pre><code>## Observations: 198
+## Variables: 23
+## $ title             &lt;chr&gt; &quot;Transparency&quot;, &quot;The Fitting&quot;, &quot;Edge of Augu...
+## $ artist            &lt;chr&gt; &quot;James Edward Davis&quot;, &quot;Francisco Borès&quot;, &quot;Ma...
+## $ artist_bio        &lt;chr&gt; &quot;(American, 1901–1974)&quot;, &quot;(Spanish, 1898–197...
+## $ artist_birth_year &lt;int&gt; 1901, 1898, 1890, 1925, 1913, 1923, 1893, 18...
+## $ artist_death_year &lt;dbl&gt; 1974, 1972, 1976, 2010, 2009, 2015, 1983, 19...
+## $ num_artists       &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+## $ n_female_artists  &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,...
+## $ n_male_artists    &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+## $ artist_gender     &lt;chr&gt; &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Male&quot;, &quot;Mal...
+## $ year_acquired     &lt;dbl&gt; 1945, 1949, 1954, 1955, 1942, 1960, 1939, 19...
+## $ year_created      &lt;int&gt; 1944, 1934, 1953, 1952, 1941, 1959, 1922, 19...
+## $ circumference_cm  &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ depth_cm          &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ diameter_cm       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ height_cm         &lt;dbl&gt; 35.6, 184.8, 121.9, 58.7, 51.1, 223.6, 37.8,...
+## $ length_cm         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ width_cm          &lt;dbl&gt; 51.1, 220.4, 71.1, 45.1, 126.7, 172.2, 46.0,...
+## $ seat_height_cm    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, ...
+## $ purchase          &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TR...
+## $ gift              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA...
+## $ exchange          &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA...
+## $ classification    &lt;chr&gt; &quot;Painting&quot;, &quot;Painting&quot;, &quot;Painting&quot;, &quot;Paintin...
+## $ department        &lt;chr&gt; &quot;Painting &amp; Sculpture&quot;, &quot;Painting &amp; Sculptur...</code></pre>
+<pre class="r"><code># the graph
+ggplot(data_purch, aes(x = year_acquired, y = year_created)) + 
+  geom_smooth(color = &quot;black&quot;) + 
+  labs(x = &quot;Year Acquired&quot;, y = &quot;Year Created&quot;) + 
+  ggtitle(&quot;MoMA Paintings Purchased Over the Years and Creation Year&quot;) +
+  theme_bw() </code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39;</code></pre>
+<p><img src="/post/2018-06-21-how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+## 2) Type of Plot:</p>
+<p>Line plot.</p>
+</div>
+<div id="data-description" class="section level2">
+<h2>3) Data Description:</h2>
+<p>This data is from the MOMA dataset we worked with in Lab 2. The data contains information about all the artwork at the MOMA, including the year created, year acquired, artists, information about the artist, the paintings dimentions, type of art, how it was acquired.</p>
+</div>
+<div id="audience" class="section level2">
+<h2>4) Audience:</h2>
+<p>I think the audience in this graph is anyone who is curious about the timing of MOMAs acquisitions relative to when it is created. This could be useful for anyone working at a modern art museum or who curates modern art.</p>
+</div>
+<div id="representation-description" class="section level2">
+<h2>5) Representation Description:</h2>
+<p>With this graph I was attempting to show just how “Modern” MOMA truly stays with their acquisition of new pieces and if the years of creation positively correlate with the years of acquisition. The graph can be used to show that this correlation is indeed positive and the MOMA tries to purchase current work.</p>
+<p>Definitions of different graph parts:
+* X and Y axis of a line graph show the value of two numeric variables
+* Line - this line show where the X values coorespond to Y values. This line was created using LOESS method to smooth out the line
+* Grey area around line - This is the standard error around the line the show the variability in Y at each value of X</p>
+</div>
+<div id="how-to-read-it-what-to-look-for" class="section level2">
+<h2>6) How to read it &amp; What to look for:</h2>
+<p>To read this graph, one must first familiarize themselves with the x and y axis to know which numeric variables are being compared with one another. They will see it is year acquired by year created.</p>
+<p>Then the viewer will want to study the line to understand the relationship between year created and acquired. They will first want to note the direction of the line. If the line is flat, there is no relationship. If the line is pointing up toward the right of the graph, there is a positive relationship. If the line is pointing up to the left, there is a negative relationship. If the line moves up and down at various points, there could be a biphasic or relationship that requires transformation of one variable to see clearly (logrithmic, exponential, etc). The veiwer will note that this line is pointing up to the right and thus shows a positive relationship between years acquired and created, which suggests that the MOMA keeps their collection current. However, the line does seem to be leveling out, suggesting that the MOMA might be keeping acquisitions to artwork made shortly after the 1970s, when the modern art period is typically considered to have ended.</p>
+<p>The view will also want to look at the grey area arounnd the line to note any large differences in standard error, and thus differences in variability. They will note that the varibility of the year created has steaduly increased as year of acquisition increases. This suggests that in the 2000s the MOMA started buying art from a larger range of years creation. This actually has a very interesting interpretation that the viewer can start to gather - that modern and post-modern or contemporary art have different definitions and perhaps the MOMA is purchasing art that is considered modern according to definition. Modern art is art generally from 1860s-1970s and so in the 2000s perhap MOMA is predominately acquiring work still within the modern period, but also some newer contemporary art and this has caused the increase in varibility of the year of creation of the work.</p>
+</div>
+<div id="presentation-tips" class="section level2">
+<h2>7) Presentation tips:</h2>
+<p>Annotation could be used here to point out when the variability in “year created” increases and where the line levels out to point the viewer to that and gather a change in acquisition patterns.</p>
+<p>I believe color is unnecessary here as only one relationship under consideration. Perhaps is multiple modern art museums’ purchasing patterns were being considered then color would be useful.</p>
+<p>The graph is scaled to show the full range of the relationship of year acquired and year created with some additional spacing around the lines so the graph does not seem claustrophobic. There are no minor tick lines for the same reason.</p>
+</div>
+<div id="variations-and-alternatives-are-there-common-variations-of-this-graph-how-are-they-different-how-are-they-used-are-there-alternatives" class="section level2">
+<h2>8) Variations and alternatives: are there common variations of this graph? How are they different, how are they used? Are there alternatives?</h2>
+<p>Variations: A different type of line or smoothing process could have been used. If a basic line graph was used we would see the exact average of the year created that corresponds to every year acquired rather than what is shown with the LOESS (Local Polynomial Regression Fitting) method in geom_smooth and could perhaps give a more accurate portrail of the data. Alternatives to the LOESS methods include linear model, generalized linear model, generalized additive model, or robus linear model.</p>
+<p>Alternative: A scatter plot also could have been used or superimposed under the line. The scatter plot would definitely add more detail about the exact year of creation for every art work that was acquired in a certain year. However, this alternative would clutter the graph and this level of detail is not necessary for someone who is just trying to understand the relationship of the two. If the scatterplot was made quite transparent and under the line graph, it could add some helpful detail about the nature of the variability in year of creation.</p>
+</div>
+<div id="methods" class="section level2">
+<h2>9) Methods:</h2>
+<p>In order to track the purchasing patterns of the MOMA I first used filter() to filter the data to only data that was purchased not gifted. Then I created this graph using <code>ggplot()</code> and <code>geom_smooth()</code>. Within the geom_smooth function I specified the color to be black because the automatic color of geom_smooth was unecessary with only one line. Then I specified the labels of the x and y axis with <code>labs()</code> and the graph title with <code>ggtitle()</code>. I used <code>theme_bw()</code> to standardize the representation of the graph and put a black outline around the plot.</p>
+</div>
+
+
             </div>
         </div>
     </div>
