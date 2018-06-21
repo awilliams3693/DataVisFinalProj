@@ -63,15 +63,6 @@ library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/data
     </item>
     
     <item>
-      <title>Final Project</title>
-      <link>/projects/small-project/</link>
-      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/projects/small-project/</guid>
-      <description>knitr::include_graphics(here(&amp;ldquo;static&amp;rdquo;,&amp;ldquo;Final Presentation.pdf&amp;rdquo;))</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>/about/</link>
       <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
