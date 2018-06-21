@@ -38,6 +38,7 @@ ggplot(data_purch, aes(x = year_acquired, y = year_created)) +
   ggtitle("MoMA Paintings Purchased Over the Years and Creation Year") +
   theme_bw() 
 ```
+
 ## 2) Type of Plot:
 
 Line plot. 

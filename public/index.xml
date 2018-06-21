@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Acquisition vs. Rapid Reacquisition of Conditioned Freezing</title>
+      <link>/post/acquisition-vs-rapid-reacquisition-of-conditioned-freezing/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/acquisition-vs-rapid-reacquisition-of-conditioned-freezing/</guid>
+      <description>## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() 1) The code: data &amp;lt;- read_csv(here(&amp;quot;static/data&amp;quot;,&amp;quot;test1_avg_hits_bi.csv&amp;quot;)) ## Warning: Missing column names filled in: &amp;#39;X1&amp;#39; [1] ## Parsed with column specification: ## cols( ## X1 = col_double(), ## cohort = col_character(), ## hitL = col_character(), ## hitR = col_character(), ## group = col_character(), ## treatment = col_character(), ## pf = col_double() ## ) ggplot(data, aes(x= group, y=pf, color = treatment)) + geom_boxplot(outlier.</description>
+    </item>
+    
+    <item>
+      <title>Gun Sales in the Top Selling States</title>
+      <link>/post/gun-sales-in-the-top-selling-states/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gun-sales-in-the-top-selling-states/</guid>
+      <description>1) The Code: library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown library(tidyverse) ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(wesanderson) gundata &amp;lt;- read_csv(here::here(&amp;quot;static/data&amp;quot;,&amp;quot;gunsales.csv&amp;quot;)) ## Parsed with column specification: ## cols( ## .</description>
+    </item>
+    
+    <item>
       <title>How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years</title>
       <link>/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
@@ -20,6 +38,17 @@
       <description>This post contains my visualization of the MoMA’s Purchasing Patterns by Year of Creation of the Painting. I was trying to determine what era of art the MoMa purchases from and if the year of creation followed the year of purchasing.
 Package Install
 ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.</description>
+    </item>
+    
+    <item>
+      <title>Plotly Html Widget: Multiple Regression</title>
+      <link>/post/plotly-html-widget-multiple-regression/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plotly-html-widget-multiple-regression/</guid>
+      <description>This work is VERY closely adaped from Modern Dive, an online R stats book.
+1) The code: Packages
+library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown library(tidyverse) ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(plotly) ## ## Attaching package: &amp;#39;plotly&amp;#39; ## The following object is masked from &amp;#39;package:ggplot2&amp;#39;: ## ## last_plot ## The following object is masked from &amp;#39;package:stats&amp;#39;: ## ## filter ## The following object is masked from &amp;#39;package:graphics&amp;#39;: ## ## layout Graph:</description>
     </item>
     
     <item>
@@ -59,22 +88,14 @@ Package Install
     </item>
     
     <item>
-      <title>Example article</title>
-      <link>/blog/example-article/</link>
-      <pubDate>Mon, 28 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/example-article/</guid>
-      <description>Text This is some text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut pretium at ipsum eu pharetra. Proin ac ante et leo ultrices bibendum. Vivamus id ipsum fermentum, aliquam nunc mollis, tempus sapien. Praesent scelerisque cursus eros vitae pretium. Etiam sit amet ligula in leo euismod malesuada. Proin eleifend pulvinar ipsum, eu lobortis ante pharetra eu. Vivamus sem elit, venenatis eget ornare nec, ullamcorper non tellus. Duis quis massa finibus, euismod erat quis, fermentum nunc.</description>
-    </item>
-    
-    <item>
       <title>About</title>
       <link>/about/</link>
       <pubDate>Sat, 22 Aug 2015 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
       <description>Amy Williams is a PhD candidate with a strong interest in data visualization, analysis, and licensing practices.
-Background My background is in academia, specifically neuroscience and psychology research with a focus on mental health with abberant learning components. My undergraduate work at University of California, Santa Barbara in the lab of Karen Szumlinski, PhD focus on the neural molecular processes behind cocaine and alcohol learned binging behavior. From there, I joined the Department of Behavioral Neuroscience in 2013 to work with Matt Lattal, PhD in studying the neurobiology of abberant fear learning that mimics some symptomology of PTSD.</description>
+Background
+My background is in academia, specifically neuroscience and psychology research with a focus on mental health with abberant learning components. My undergraduate work at University of California, Santa Barbara in the lab of Karen Szumlinski, PhD focus on the neural molecular processes behind cocaine and alcohol learned binging behavior. From there, I joined the Department of Behavioral Neuroscience in 2013 to work with Matt Lattal, PhD in studying the neurobiology of abberant fear learning that mimics some symptomology of PTSD.</description>
     </item>
     
     <item>
@@ -85,60 +106,6 @@ Background My background is in academia, specifically neuroscience and psycholog
       <guid>/projects/projects/</guid>
       <description>In this theme, it is possible to add sections like a Projects one for example. You can add plenty of articles about your projects and a presentation page that will be displayed before the list. All is modulable, if you don&amp;rsquo;t want something.
 A Hollywood-funded film version, produced and filmed in the UK, was released in April 2005, and radio adaptations of the third, fourth, and fifth novels were broadcast from 2004 to 2005.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/blog/hello-r-markdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/blog/hello-r-markdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
-    <item>
-      <title>Creating a New Theme</title>
-      <link>/blog/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/creating-a-new-theme/</guid>
-      <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>/blog/hugo-template-primer/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/hugo-template-primer/</guid>
-      <description>Hugo uses the excellent go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in go templates.
-This document is a brief primer on using go templates.</description>
-    </item>
-    
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>/blog/getting-started-with-hugo/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/getting-started-with-hugo/</guid>
-      <description>Step 1. Install Hugo Goto hugo releases and download the appropriate version for your os and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at installing hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/blog/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/blog/</guid>
-      <description>Final Presentation   class: center, middle, inverse, title-slide # Final Presentation ## CS631 ### Amy Williams --- # The Data ###Data was collected by me to examine c-Fos levels in the fear circuit after contextual fear conditioning #### 4 variables * 2 numeric - animal IDs and average c-fos counts * 2 categorical - behavioral group and brain region * Behavioral group - comparing initital learning ( __COND__ ) to relearning ( __REC EXT__ and __REC EXT__ ) and no-learning controls ( __HAND__ ) * Brain Regions of Interest- * __Hippocampus__ and Dentate Gyrus ( __DG__ ) * Bed nucelus of the stria terminalis ( __d/vBNST__ ) --- #The Data Cont&#39;d ``` # A tibble: 6 x 4 id count group region &amp;lt;int&amp;gt; &amp;lt;dbl&amp;gt; &amp;lt;chr&amp;gt; &amp;lt;chr&amp;gt; 1 21 34 COND Hippocampus 2 22 26 COND Hippocampus 3 41 38.</description>
     </item>
     
     <item>

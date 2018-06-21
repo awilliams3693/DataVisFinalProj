@@ -1,0 +1,96 @@
+---
+title: Acquisition vs. Rapid Reacquisition of Conditioned Freezing
+author: Amy Williams
+date: '2018-06-21'
+slug: acquisition-vs-rapid-reacquisition-of-conditioned-freezing
+categories:
+  - R
+tags:
+  - data visualization
+  - plot
+  - R Markdown
+description: Desc
+hacker_news_id: ''
+lobsters_id: ''
+meta_img: /images/image.jpg
+---
+
+```{r echo = FALSE}
+library(readr)
+library(here)
+library(tidyverse)
+```
+
+
+## 1) The code:
+
+```{r}
+data <- read_csv(here("static/data","test1_avg_hits_bi.csv"))
+ggplot(data, aes(x= group, y=pf, color = treatment)) +
+  geom_boxplot(outlier.size = 2) + 
+  geom_dotplot(binaxis = "y", stackdir = "center", binwidth = 1.5, method = "histodot", position=position_dodge(0.75), fill = "white") +
+  labs(x = "Group", y = "Average % Freezing", color = "BNST Treatment") +
+  scale_color_manual(values = c("red","dark green")) + 
+  theme_bw()
+```
+
+## 2) Graph Type:
+
+Boxplot + dot plot
+
+## 3) Data Description
+
+The data here is the average percent freezing (numeric variable) in 4 groups (two categorical variables) of rats following different behavioral treatment (contextual fear conditioning or reconditioning; COND vs RECOND) or drug treatment (saline or muscimol + baclofen; M+B vs SAL). I collected this for my dissertation research. 
+
+### The paradigm: 
+Pavlovian Fear Conditioning occurs when a noxious unconditioned stimulus, like mild footshock, is paired with a neutral conditioned stimulus, like the context. During acquisition, when footshock is paired with context, rats will yip, jump, and display avoidance behavior, which is their unconditioned response to footshock. But after several pairings of footshock with context, when the context is presented in the absence of footshock, rodents display a conditioned response of freezing, this is a natural fear response of the rodent and suggests that the rodent has formed an associative memory of the context with shock. Similarly, after acquisition, context can be presented without footshock, essentially unpairing shock and context, to cause extinction of the conditioned freezing response, which is the dependent measure displayed here. 
+
+### My study:
+
+I study what happens after extiction of conditioned responding. This is important because fear memory is extremely hard to extinguish, such as in those with post traumatic stress disorder. So I study what conditioned responding looks like when shock and context and breifly repaired, in reacquisition. We see that rats who have been previously acquired (RECOND) show a rapid reacquisition of fear relative to animals acquiring for the first time (COND). This suggests that despite extinction, rats remember the initial conditioning and have a "savings" of acquisition memory that can be reaccessed and enhanced during reacquisition. 
+
+Further I want to understand what brain regions play a role in the rapid reacquisition of conditioned fear. I chose to explore the BNST as it is a structure critical to anxiety and initial fear conditioning. In order to manipulate the BNST intracranial cannulas were installed above the BNST and a cocktail of GABA agonists (muscimol and baclofen; commonly used to temporararily inhibit brain activity) were infused immediately prior to a breif re-exposure to context-shock pairings
+
+## 4) Audience Description:
+
+The audience intended for this graph is individuals with knowledge of pavlovian learning paradigms, specifically fear conditioning. I believe they will gather the most benefit for this information because they know to look for the changes in percent freezing between groups and drug treatment that are relevant, but I do think anyone could understand that M+B decreases conditioned freezing in only the RECOND group. 
+
+## 5) Representation Description:
+
+This graph is trying to show the results Pavlovian fear conditioning experiment in Long Evans rats. The experiment is looking at the role of a brain structure, the bed nuleus of the stria terminalis (BNST), in the rapid reacquisition of contextual fear behavior. 
+
+### Graph Parts
+The graph shows that there are 4 groups with variable Average % Freezing on the y axis in response to their behavioral group assignment or BNST treatment on the x axis. The boxes repesent the interquartile range of freezing for each group. The solid horizontal line in each box represents the median average freezing of each group. The verticle lines extending from each box represent the minimum and maximum amoung of freezing for each group. The circles of the dot plot represent the percent freezing of each individual animal colored by each group. The legend indicates the colors of the two drug treatments; blue is saline and red is muscimol + baclofen. 
+
+The graph shows data from the test of conditioned fear to the context 24 hr after breif exposure with an active (saline infusion; SAL) or inactive (muscimol + baclofen infusion; M+B) BNST in both groups. We see that RECOND animals freeze significantly more relative to COND in saline treated animals, which suggests again that reconditioning results in a rapid reacquisition. However, we see that inactivative the BNST with M+B impairs the rapid reacqusition effect, which suggests that the BNST is involved in the rapid reacqusition of fear follwoing post-extinction reconditioning.
+
+## 6) How to read:
+
+The box plot provides information on the variability and median of a measure across groups. This graph is supperior to the bar plot in that we get more information on the range and variability of the group in addition to the measure of the center. 
+
+* _Variability_: We can see that the RECOND groups tend to have more variability in average % freezing than COND groups due to the boxes larger height and the larger range of the whiskers min and max. We can also see that saline groups in blue tend to show more variability due to the presence of clear outliers. This is an important interpretation of the rats variable natural responding to conditioning, as is often seen in the literature.
+
+* _Median_: We can also see that some groups display similar median average percent freezing, while others do not. Similarity in medians suggests groups are not statisitically different, while differences in median suggest that the groups are statisitically different, especially when IQRs do not overlap. We see that COND groups have similar average percent freezing to one another despite different BNST treatments. Conversely, COND groups have different average percent freezing from both RECOND groups, suggesting that reacquisition was more rapid than acquisition. Importantly, the medians of RECOND groups differ based on treatment, which shows that inactivating the BNST with M+B impairs the rapid reacqusition effect. 
+
+## 7) Presentation Tips:
+
+* _Annotation_: Annotation is used sparsely here to indicate groups and behavioral treatment. Additional annotation of which groups show significantly different average freezing would be important to add. 
+
+* _Color_: Color is used here to separate group treatments. In my opinion, the color use is intuitive as M+B inhibits activity while saline allows natural neural activity, so the use of colors commonly associated with stop and go on a traffic light is nice. I do worry the color is unnecessary though. For future iteration of the graph, I would like to use different line patterns or greyscale to distinguish the two behavioral treatments.  
+
+* _Composition_: The set up of the graph by behavioral groups on the x axis and drug treatment by color is the best for this graph's purposes. It makes it clear that inactivating the BNST impairs reacquisition, but not initial weak acqusition. If the treatments were on the x axis and groups determined by color, one could still interpret that difference, but they would be more likely to see the group difference (rapid reacqusition effect) before any effect of BNST inactivation. 
+
+## 8) Variations and Alternatives:
+
+* _Alternatives_: I believe this graph does an adequet job of describing the data and significant findings here. Alternatives include a violin plot or beeswarm, but the addition of the dot plot here allows you to get information about individual subjests and y value density like these alternatives would. 
+
+* _Variations on the common box plot_:
+
+  1. Width: Width of the boxes can also be used to display information about group size (a larger width means a larger group)
+  2. Notches: Notches on the boxes around the median can be used as an approximation of significance of difference of medians. If the notches do not overlap, there is likely a statistically significant difference between the medians of the groups. 
+  
+## 9) Methods: 
+
+My data were already in the tidy format and did not require reshaping. 
+
+To make this graph, I used `ggplot` to compare groups across percent freezing separated in color by BNST treatment. Within `geom_boxplot` I specified my outlier shape. I used `labs()` to add appropriate labels and `scale_color_maunual()` to choose intuitive colors. Finally, I used `theme_bw()` to remove the grey background and create a boader around the chart.

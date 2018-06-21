@@ -12,6 +12,24 @@
     
     
     <item>
+      <title>Acquisition vs. Rapid Reacquisition of Conditioned Freezing</title>
+      <link>/post/acquisition-vs-rapid-reacquisition-of-conditioned-freezing/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/acquisition-vs-rapid-reacquisition-of-conditioned-freezing/</guid>
+      <description>## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() 1) The code: data &amp;lt;- read_csv(here(&amp;quot;static/data&amp;quot;,&amp;quot;test1_avg_hits_bi.csv&amp;quot;)) ## Warning: Missing column names filled in: &amp;#39;X1&amp;#39; [1] ## Parsed with column specification: ## cols( ## X1 = col_double(), ## cohort = col_character(), ## hitL = col_character(), ## hitR = col_character(), ## group = col_character(), ## treatment = col_character(), ## pf = col_double() ## ) ggplot(data, aes(x= group, y=pf, color = treatment)) + geom_boxplot(outlier.</description>
+    </item>
+    
+    <item>
+      <title>Gun Sales in the Top Selling States</title>
+      <link>/post/gun-sales-in-the-top-selling-states/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/gun-sales-in-the-top-selling-states/</guid>
+      <description>1) The Code: library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown library(tidyverse) ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(wesanderson) gundata &amp;lt;- read_csv(here::here(&amp;quot;static/data&amp;quot;,&amp;quot;gunsales.csv&amp;quot;)) ## Parsed with column specification: ## cols( ## .</description>
+    </item>
+    
+    <item>
       <title>How Modern is the MoMA? Purchases of Paintings by MoMA Over the Years</title>
       <link>/post/how-modern-is-the-moma-purchases-of-paintings-by-moma-over-the-years/</link>
       <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
@@ -20,6 +38,17 @@
       <description>This post contains my visualization of the MoMA’s Purchasing Patterns by Year of Creation of the Painting. I was trying to determine what era of art the MoMa purchases from and if the year of creation followed the year of purchasing.
 Package Install
 ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.</description>
+    </item>
+    
+    <item>
+      <title>Plotly Html Widget: Multiple Regression</title>
+      <link>/post/plotly-html-widget-multiple-regression/</link>
+      <pubDate>Thu, 21 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/plotly-html-widget-multiple-regression/</guid>
+      <description>This work is VERY closely adaped from Modern Dive, an online R stats book.
+1) The code: Packages
+library(readr) library(here) ## here() starts at /Users/amywilliams/Desktop/datavis/amy_williams_blogdown library(tidyverse) ## ── Attaching packages ──────────────────────────────────────────────────────────────── tidyverse 1.2.1 ── ## ✔ ggplot2 2.2.1 ✔ purrr 0.2.5 ## ✔ tibble 1.4.2 ✔ dplyr 0.7.5 ## ✔ tidyr 0.8.1 ✔ stringr 1.3.1 ## ✔ ggplot2 2.2.1 ✔ forcats 0.3.0 ## ── Conflicts ─────────────────────────────────────────────────────────────────── tidyverse_conflicts() ── ## ✖ dplyr::filter() masks stats::filter() ## ✖ dplyr::lag() masks stats::lag() library(plotly) ## ## Attaching package: &amp;#39;plotly&amp;#39; ## The following object is masked from &amp;#39;package:ggplot2&amp;#39;: ## ## last_plot ## The following object is masked from &amp;#39;package:stats&amp;#39;: ## ## filter ## The following object is masked from &amp;#39;package:graphics&amp;#39;: ## ## layout Graph:</description>
     </item>
     
     <item>

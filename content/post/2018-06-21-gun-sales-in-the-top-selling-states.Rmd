@@ -1,0 +1,85 @@
+---
+title: Gun Sales in the Top Selling States
+author: Amy Williams
+date: '2018-06-21'
+slug: gun-sales-in-the-top-selling-states
+categories:
+  - R
+tags:
+  - data visualization
+  - plot
+  - R Markdown
+description: Desc
+hacker_news_id: ''
+lobsters_id: ''
+meta_img: /images/image.jpg
+---
+
+## 1) The Code: 
+
+```{r}
+library(readr)
+library(here)
+library(tidyverse)
+library(wesanderson)
+```
+
+```{r}
+gundata <- read_csv(here::here("static/data","gunsales.csv"))
+gundata2 <- gundata %>% filter(state != "Totals")
+gundata3 <- gundata2 %>% filter(state == "Texas" | state == "Florida" | state == "California" | state == "Pennsylvania" | state == "Ohio")
+plot2 <- ggplot(gundata3, aes(x = year, y = guns_sold, color= state)) + 
+  geom_smooth(se =F, show.legend = T) + 
+  labs(x = "Year", y = "Guns Sold") + theme_bw() + 
+  scale_color_manual(values = wes_palette("Darjeeling1")) + 
+  ggtitle("Gun Sales in the Top-Selling States, 1998-2015")
+plot2
+```
+
+## 2) Graph Type:
+
+Line plot
+
+## 3) Data Description:
+
+  This source data is information on gun sales by state up from years 1998-2015. The data comes from the FBI's National Instant Criminal Background Check System. It contains info on the guns sold for each month of each year in each state, as well as the current population of the state, in store purchases, has permits, type of gun, if multiples guns were purchased etc. Most variables are numeric with the excpetion of State as the only categorical variable.  
+  
+  I further filtered the data to gather information of the states with the most sales. 
+  
+## 4) Audience:
+
+I think this graph is truly relevant to everyone, but specifically to those trying to understand how many guns are sold over the years in the states with the largest gunsales and if any trend exist. 
+
+## 5) Representation Description:
+
+ I am trying to show the trends in gun sales over the years in the states that tend to have the most sales, which I think can be used to make a point that gun sales are increasing despite occassional dips in sales. 
+ 
+ Graph Parts: 
+* X and Y axis of a line graph show the value of two numeric variables. - Here, the Y axis is the number of guns sold and the X axis is the corresponding year. 
+* Lines - each line show where the X values coorespond to Y values for multiple groups. The lines were created using LOESS method to smooth out the line. Each line has a different color to represent different groups. - Here each line represents a different state. 
+
+## 6) How to read:
+
+ For a line graph with multiple lines, the creator is usually trying to show the relationship of two numeric variables for different categorical variables. 
+ 
+ A viewer should first orient themselves to the X and Y axes. They will then be able to tell that they are looking at how gun sales vary over the years. 
+ Next, they should study the legend for information about what each line represents. They will then be able to see that each line corresponds to a different state and that each state line has a different color.
+ Then, the viewer can compare each states trend in gun sales over the years with one another. They will see that TX tends to have the highest sales that have only grown larger. Also in CA and TX there was a dip in sales in 2000 that lifted in 2008, when all states increased their gun sales likely due to people fearing guns would be taken away from them during the Obama administration... 
+ 
+## 7) Presentation tips: 
+
+* _Annotation_: Annotation is used sparsely here only in the chart title, x and y axes labels, and legend. I believe annotation could be used to note important political event (Obama election) or important events involving guns that could influence gun sales during 1998 and 2008
+
+* _Color_: Color is used here to separate each line by different states clearly. It could have been possible to use greyscale and patterns to distinguish the lines, but with 5 lines, color becomes the clearest signifier as greyscale and patterns can look very similar when comparing 5 different types.  
+
+* _Composition_: The set up of the graph by year on the x axis and gun sales on the y axis makes it visually clear how gun sales have changed over the years. Using different lines for different states allows one to compare the yearly trends of gun sales of different states. Major and minor ticklines are included on both axis to allow for more information on the exact numbers for both axes. The scale covers all years of data collected, while not making the graph too claustrophobic. 
+
+## 8) Variations and alternatives: 
+
+Variations: A different type of line or smoothing process could have been used. If a basic line graph was used we would see the exact average of the year created that corresponds to every year acquired rather than what is shown with the LOESS (Local Polynomial Regression Fitting) method in geom_smooth and could perhaps give a more accurate portrail of the data. Alternatives to the LOESS methods include linear model, generalized linear model, generalized additive model, or robus linear model.
+
+Alternative: A scatter plot also could have been used or superimposed under the line. The scatter plot would definitely add more detail about the exact year of creation for every art work that was acquired in a certain year. However, this alternative would clutter the graph and this level of detail is not necessary for someone who is just trying to understand the relationship of the two. 
+
+## 9) Methods: 
+
+  First, I uploaded the data and used `glimpse()` to apprehend which states had the most gun sales per year. Then I used `filter()` to remove the "Totals" level from the state as well as to only have TX, CA, FL, OH, PA. I used `ggplot()` to specify the x and y axes and to use state as a color aesthetic. I used `geom_smooth()` to create the line graph and removed the SE grey area around each state to make it less cluttered. I specified the labels with `labs()` and the colors of each state line with `scale_color_manual()` using the `wesanderson` package Darjeeling color scheme. `ggtitle()` was used to give the graph a title and `theme_bw()` was used to remove the grey background and specify the text and major and minor ticks.

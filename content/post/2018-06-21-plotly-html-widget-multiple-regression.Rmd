@@ -1,0 +1,116 @@
+---
+title: 'Plotly Html Widget: Multiple Regression'
+author: Amy Williams
+date: '2018-06-21'
+slug: plotly-html-widget-multiple-regression
+categories:
+  - R
+tags:
+  - data visualization
+  - plot
+  - R Markdown
+description: Desc
+hacker_news_id: ''
+lobsters_id: ''
+meta_img: /images/image.jpg
+---
+
+ This work is VERY closely adaped from [Modern Dive](http://moderndive.com/), an online R stats book. 
+
+## 1) The code:
+
+Packages
+```{r}
+library(readr)
+library(here)
+library(tidyverse)
+library(plotly)
+```
+
+Graph:
+```{r}
+bnst <- read_csv(here("static/data","vBNST_fos_pf_1.2.csv"))
+model_lm <- lm(count ~ pf + group, data=bnst)
+x_grid <- seq(from=min(bnst$pf), to=max(bnst$pf), length=100)
+y_grid <- seq(from=min(bnst$group), to=max(bnst$group), length=200)
+z_grid <- expand.grid(x_grid, y_grid) %>%
+  tbl_df() %>%
+  rename(
+    x_grid = Var1,
+    y_grid = Var2
+  ) %>%
+  mutate(z = coef(model_lm)[1] + coef(model_lm)[2]*x_grid + coef(model_lm)[3]*y_grid) %>%
+  .[["z"]] %>%
+  matrix(nrow=length(x_grid)) %>%
+  t()
+plot_ly(showscale = FALSE) %>%
+  add_markers(
+    x = bnst$pf,
+    y = bnst$group,
+    z = bnst$count,
+    hoverinfo = 'text',
+    text = ~paste("x1 - pf: ", bnst$pf, "</br> x2 - group: ",
+                  bnst$group, "</br> y - count: ", bnst$count)
+  ) %>%
+  layout(
+    scene = list(
+      xaxis = list(title = "Avg % Freezing"),
+      yaxis = list(title = "Group"),
+      zaxis = list(title = "Avg cFos Positive Cells")
+    )
+  ) %>%
+  add_surface(
+    x = x_grid,
+    y = y_grid,
+    z = z_grid
+  )
+```
+
+## 2) Graph Type: 
+
+A 3-D scatterplot and regression plane in an interactive widget
+
+## 3) Description of the Data:
+
+This is data I collected in my disseration research that includes the percent conditioned freezing in response to a reconditioning shock, the corresponding behavioral group (as represented in numbers here for easier multiple regression calculation), and amount of cfos positive cells in the ventral bed nucleus of the stria terminalis following reconditioning (as collected by post-morteum immunohistochemistry) within the same animals. All variables are quantitative (numeric) for multiple regression analysis.
+
+## 4) Audience:
+
+This graph is aimed for people who either are interested in the brain regions activated by differential conditioning and conditioned freezing behavior or those who are interested in ways to visualized multiple regressions. 
+
+## 5) Representation Description: 
+
+I was trying to understand how the relationship of 3 varibles: cfos positive cells, percent freezing, and behavioral treatment (groups). Specifically, I was trying to see if the average number of cfos positive cells, which is a marker of neural activity, could be regressed from the animals conditioned freezing in response to a reconditioing shock 1hr prior to sacrifice, as well as their previous behavioral treatment before the day of sacrifice. In running my multiple regression, I wanted to have a way to visualize the relationship and ran across this plot from an online textbook, Modern Dive. 
+
+Graph parts:
+* Y, X, and Z axes - this is a 3D graph where 3 variables are plotted on 3 different axes. X is the Average percent freezing, Y is the Group and Z is the Avg cfos positive cells.
+* Dots - Each dot of the scatterplot represents the individual percent freezing, cfos positive cells, and group of an animal
+* Regression Plane - the continously colored plane visually represents the regression equation of these 3 variables.
+
+## 6) How to read:
+
+   When reading a graph like this the viewer should first approach it knowing that more than two variables are being related to one another. 
+   First, they should orient themselves to the axes labels and which two variable are being related on each 2-D plane. They then should note the regression plane to see how 2 variables relate on each 2D plane and then how all 3 relate in 3D. The slope of the 2D regression lines and 3D plan tells the viewer if there is any relationship and if it is positive or negative. The scatterplot dots can be used for further information on each subject and how the regression plane was determined.
+   For this graph specifically, the viewer will be able to note that the relationship between the 3 variables is very minimal and likely don't show a significant regression. The slope is very small and almost flat and very few of the scatterplot dots fall actually on the plane. They can use the interactive component to see why this relationship does not exist- which is due to large variability across each variable that does not seem dictated by the other two variables.
+   
+## 7) Presentation tips: 
+
+* _Annotation_: Annotation is used sparsely here only in the chart title, x and y axes labels, and legend. I believe annotation could be used to note individual animals that were large outliers or fit the regression line quite well.
+
+* _Color_: Color is used here for the scatterplot dots and continuous color is used on the regression plane to show lower (purple) and higher (yellow) values in all 3 varibles. I think the color of the scatterplot dots is unnecessary and could be black. The continous color on the regression plane is helpful, but I think a better scheme could be used, such as one with a change in saturation rather than hue to suggest an increase in value of all variables.
+
+* _Composition_: The set up of the graph with cfos positive cells on the z axis makes it somewhat clear what value is being predicted from the other 2 variables. I believe the scale, tick marks, and sizing of other elements of the graph are appropriate.
+
+## 8) Variations and alternatives:
+
+Variations: I do not think variations exist for this plot
+
+Alternatives: Instead of relating all 3 variables on one graph, I could have made 2 line plots comparing cfos positive cells with group or with percent freezing. Or because group could also be a categorical variable I could have made 3 lines plots comparing cfos positive cells by percent freezing for each of the 3 groups which could tell us more specifically how that relationship changes according to group. However, I do believe this graph is the best way to represent the relationship of all 3 variables at once and explore multiple regression.
+
+## 9) Methods:
+
+I still am working out the details of this code, but I created by linear model using `lm()` and then specified the range of the x y and z planes with the dimentions of each variable assigned to them with `seq()` and then put that into a tibble using `tbl_df()`. I then used `mutate()` to transform the variables with the linear model specificed earlier and then put this into a matrix with `matrix()` that was then transposed with `t()`.
+
+Plotly was then used to make the interactive graph by adding the markers `add_markers()`, layout `layout()`, and surface `add_surface()`. 
+
+I would like to figure out more about how to modify the surface and markers of a plotly graph. 
